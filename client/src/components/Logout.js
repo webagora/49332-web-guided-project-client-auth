@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import axios from 'axios';
 
 const Logout = (props)=> {
+    const { push } = props.history;
+
     useEffect(()=> {
         axios.post('http://localhost:5001/api/logout', {}, {
             headers:{
@@ -9,7 +11,7 @@ const Logout = (props)=> {
             }
         }).then(resp => {
             localStorage.removeItem('token');
-            props.history.push('/login');
+            push('/login');
         })
     }, []);
 
