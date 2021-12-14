@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Logout = ()=> {
     useEffect(()=> {
-        axios.
+        axios.post('http://localhost:5001/api/logout')
     }, []);
 
     return(<div></div>);
