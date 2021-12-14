@@ -18,7 +18,7 @@ class GasPrices extends React.Component {
     })
       .then(resp=> {
         this.setState({
-          gasPrices: resp.data
+          gasPrices: resp.data.data
         });
       })
       .catch(err=> {
