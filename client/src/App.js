@@ -20,7 +20,7 @@ function App() {
             <Link to="/logout">Logout</Link>
           </li>
           <li>
-            <Link to="/protected">Admin</Link>
+            { (isLoggedIn && localStorage.getItem("role") === "admin") && <Link to="/protected">Admin</Link>}
           </li>
           <li>
             {isLoggedIn && <Link to="/protected">Protected Page</Link>}
