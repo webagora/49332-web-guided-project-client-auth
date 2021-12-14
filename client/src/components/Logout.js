@@ -3,7 +3,11 @@ import axios from 'axios';
 
 const Logout = ()=> {
     useEffect(()=> {
-        axios.post('http://localhost:5001/api/logout')
+        axios.post('http://localhost:5001/api/logout', {}, {
+            headers:{
+                authorization: localStorage.getItem('token')
+            }
+        })
     }, []);
 
     return(<div></div>);
