@@ -7,7 +7,7 @@ const Logout = (props)=> {
     const { push } = useHistory();
 
     useEffect(()=> {
-        axiosWithAuth
+        axiosWithAuth()
             .post('http://localhost:5001/api/logout')
             .then(resp => {
                 localStorage.removeItem('token');
