@@ -20,7 +20,20 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    
+    //1. make an axios call to login (add our user information)
+    //2. if request is successful, save our token to localStorage
+    //3. if request is not successful, log error message.
+    axios.post('http://localhost:5001/api/login', this.state.credentials)
+      .then(resp=> {
+        const { token, role, username } = resp.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+        localStorage.setItem("username", username);
+        this.props.history.push('/protected');
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   render() {
