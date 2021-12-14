@@ -5,7 +5,7 @@ const PrivateRoute = ({component, ...rest  }) => {
     console.log(component);
     console.log(rest);
     return <Route {...rest} render={()=> {
-        return(<p></p>);
+        return(<p>THIS IS A PROTECTED ROUTE</p>);
     }}/>
 }
 
