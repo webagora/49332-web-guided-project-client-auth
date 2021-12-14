@@ -20,6 +20,9 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    //1. make an axios call to login (add our user information)
+    //2. if request is successful, save our token to localStorage
+    //3. if request is not successful, log error messsage.
   };
 
   render() {
