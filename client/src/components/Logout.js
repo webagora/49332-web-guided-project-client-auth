@@ -7,6 +7,8 @@ const Logout = ()=> {
             headers:{
                 authorization: localStorage.getItem('token')
             }
+        }).then(resp => {
+            localStorage.removeItem('token');
         })
     }, []);
 
