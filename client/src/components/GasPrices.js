@@ -3,8 +3,6 @@ import moment from 'moment';
 import Loader from 'react-loader-spinner';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-console.log('axioWithAuth: ', axiosWithAuth)
-
 class GasPrices extends React.Component {
   state = {
     gasPrices: []
