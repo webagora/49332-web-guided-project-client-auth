@@ -1,12 +1,31 @@
 import React from 'react';
 import moment from 'moment';
 import Loader from 'react-loader-spinner';
+import axios from 'axios'
 
 class GasPrices extends React.Component {
   state = {
     gasPrices: []
   };
   
+  componentDidMount() {
+
+    const token = localStorage.getItem("token");
+    
+      axios.get('http://localhost:5001/api/data', {
+        headers: {
+          authorization: token
+        }
+      })
+      .then(resp=> {
+        this.setState({
+          gasPrices: resp.data.data
+        });
+      })
+      .catch(err=> {
+        console.log(err);
+      })
+  }
 
   formatData = () => {
     const formattedData = [];
