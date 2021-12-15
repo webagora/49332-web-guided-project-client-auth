@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Login from './components/Login';
@@ -6,6 +6,9 @@ import Logout from './components/Logout';
 import GasPrices from './components/GasPrices';
 
 function App() {
+  // const [isLoggedIn, setLogin] = useState(false);
+  const isLoggedIn = localStorage.getItem("token");
+
   return (
     <Router>
       <div className="App">
@@ -17,8 +20,14 @@ function App() {
             <Link to="/logout">Logout</Link>
           </li>
           <li>
-            <Link to="/protected">Protected Page</Link>
+            { (isLoggedIn && localStorage.getItem("role") === "admin") && <Link to="/protected">Admin</Link>}
           </li>
+          <li>
+            {isLoggedIn && <Link to="/protected">Protected Page</Link>}
+          </li>
+          <div>
+            {isLoggedIn && <p>Welcome {localStorage.getItem('username')}</p>}
+          </div>
         </ul>
         <Switch>
           <Route exact path="/protected" component={GasPrices} />
