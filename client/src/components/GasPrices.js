@@ -1,7 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 import Loader from 'react-loader-spinner';
-import axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth';
+
+console.log('axioWithAuth: ', axiosWithAuth)
 
 class GasPrices extends React.Component {
   state = {
@@ -12,11 +14,8 @@ class GasPrices extends React.Component {
 
     const token = localStorage.getItem("token");
     
-      axios.get('http://localhost:5001/api/data', {
-        headers: {
-          authorization: token
-        }
-      })
+      axiosWithAuth()
+      .get('http://localhost:5001/api/data')
       .then(resp=> {
         this.setState({
           gasPrices: resp.data.data
